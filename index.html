@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galabet — %250 Hoş Geldin Bonusu ile Kazanmaya Başla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================================
+   RESET & TOKENS
+============================================================ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --g: #90ce55;
+            --g-glow: rgba(144, 206, 85, .45);
+            --g-dim: rgba(144, 206, 85, .1);
+            --g-line: rgba(144, 206, 85, .2);
+            --navy: #000c18;
+            --navy-mid: #00172e;
+            --surf: #051424;
+            --bdr: rgba(144, 206, 85, .15);
+            --bdr2: rgba(255, 255, 255, .06);
+            --white: #fff;
+            --muted: #6a8aaa;
+            --fd: 'Barlow Condensed', sans-serif;
+            --fb: 'DM Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--navy);
+            color: var(--white);
+            font-family: var(--fb);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ============================================================
+   HEADER
+============================================================ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 3000;
+            height: 60px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+        }
+
+        /* Glass pill that only spans the left panel on desktop */
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: rgba(0, 12, 24, .85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--bdr);
+            padding: 0 15px;
+            height: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .logo img {
+            height: 24px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 380px) {
+            .logo img {
+                height: 20px;
+            }
+
+            .header-cta {
+                padding: 6px 12px;
+                font-size: 0.75rem;
+            }
+        }
+
+        .logo-svg {
+            display: block;
+        }
+
+        .header-nav {
+            display: none;
+            flex: 1;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .header-nav a {
+            font-family: var(--fb);
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            transition: color .2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--white);
+        }
+
+        .header-cta {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #000;
+            background: var(--g);
+            padding: 8px 18px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: box-shadow .2s, transform .15s;
+        }
+
+        .header-cta:hover {
+            box-shadow: 0 0 20px var(--g-glow);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================================
+   HERO — SPLIT SCREEN
+   Mobile: stacked (image on top, text below)
+   Desktop: true 50/50 split with diagonal slash
+============================================================ */
+
+        /* Mobile hero — image stacked above text */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 60px;
+            /* header space */
+        }
+
+        /* Mobile image */
+        .hero-image-panel {
+            position: relative;
+            width: 100%;
+            height: 55vw;
+            min-height: 260px;
+            max-height: 420px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .hero-image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
+        }
+
+        /* gradient fades bottom of image into the text panel */
+        .hero-image-panel::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, var(--navy) 0%, transparent 100%);
+        }
+
+        /* Mobile text panel */
+        .hero-text-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 32px 24px 48px;
+            background: var(--navy);
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--fb);
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: 18px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--g);
+            flex-shrink: 0;
+            animation: blink 1.6s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .1;
+            }
+        }
+
+        /* MASSIVE italic condensed headline */
+        .hero h1 {
+            font-family: var(--fd);
+            font-style: italic;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: clamp(3.4rem, 13vw, 8rem);
+            line-height: .86;
+            letter-spacing: -.01em;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 .l1 {
+            display: block;
+            color: var(--white);
+        }
+
+        .hero h1 .l2 {
+            display: block;
+            color: var(--g);
+        }
+
+        .hero h1 .l3 {
+            display: block;
+            -webkit-text-stroke: 2px rgba(255, 255, 255, .18);
+            color: transparent;
+            font-style: italic;
+        }
+
+        /* Bonus row stack — vertical */
+        .bonus-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-bottom: 28px;
+        }
+
+        .bonus-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--bdr2);
+            border-left: 3px solid var(--g-line);
+            transition: background .2s, border-left-color .2s;
+            cursor: pointer;
+        }
+
+        .bonus-row:hover {
+            background: rgba(144, 206, 85, .06);
+            border-left-color: var(--g);
+        }
+
+        .bonus-row:first-child {
+            border-radius: 4px 4px 0 0;
+        }
+
+        .bonus-row:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+
+        .bonus-row.highlight {
+            background: rgba(144, 206, 85, .08);
+            border-left-color: var(--g);
+        }
+
+        .br-pct {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-style: italic;
+            font-size: 2.2rem;
+            line-height: 1;
+            color: var(--g);
+            flex-shrink: 0;
+            min-width: 80px;
+        }
+
+        .bonus-row.highlight .br-pct {
+            font-size: 2.6rem;
+        }
+
+        .br-info {
+            flex: 1;
+        }
+
+        .br-name {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .92rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .br-cap {
+            font-size: .75rem;
+            color: var(--muted);
+            font-family: var(--fb);
+            margin-top: 2px;
+        }
+
+        .br-arrow {
+            color: var(--g);
+            font-size: .9rem;
+            opacity: .4;
+            flex-shrink: 0;
+            transition: opacity .2s, transform .2s;
+        }
+
+        .bonus-row:hover .br-arrow {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* CTAs */
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-style: italic;
+            font-size: 1rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #000;
+            background: var(--g);
+            padding: 14px 32px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: box-shadow .2s, transform .15s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent);
+            transform: translateX(-100%);
+            transition: transform .5s;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 28px var(--g-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn-ghost {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-style: italic;
+            font-size: 1rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: transparent;
+            padding: 14px 32px;
+            border-radius: 4px;
+            border: 1.5px solid rgba(255, 255, 255, .18);
+            cursor: pointer;
+            display: inline-block;
+            transition: border-color .25s, color .25s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--g);
+            color: var(--g);
+        }
+
+        /* ============================================================
+   STATS BAR
+============================================================ */
+        .stats-bar {
+            background: var(--navy-mid);
+            border-top: 1px solid var(--bdr);
+            border-bottom: 1px solid var(--bdr);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-cell {
+            padding: 24px 16px;
+            text-align: center;
+            border-right: 1px solid var(--bdr);
+            border-bottom: 1px solid var(--bdr);
+        }
+
+        .stat-cell:nth-child(2n) {
+            border-right: none;
+        }
+
+        .stat-cell:nth-last-child(-n+2) {
+            border-bottom: none;
+        }
+
+        .stat-num {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-style: italic;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            color: var(--white);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-num span {
+            color: var(--g);
+        }
+
+        .stat-label {
+            font-size: .67rem;
+            color: var(--muted);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* ============================================================
+   HOW IT WORKS — timeline style
+============================================================ */
+        .steps-section {
+            background: var(--surf);
+            border-bottom: 1px solid var(--bdr2);
+            padding: 72px 24px;
+        }
+
+        .section-head {
+            margin-bottom: 52px;
+        }
+
+        .sec-label {
+            font-family: var(--fb);
+            font-size: .66rem;
+            font-weight: 600;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--g);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sec-title {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-style: italic;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            text-transform: uppercase;
+            line-height: .9;
+        }
+
+        .sec-title em {
+            font-style: normal;
+            color: var(--g);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            display: none;
+            /* shown on desktop */
+            position: absolute;
+            top: 36px;
+            left: 36px;
+            right: 36px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--g), rgba(144, 206, 85, .2), var(--g));
+        }
+
+        .timeline-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--bdr2);
+            position: relative;
+        }
+
+        .tl-item:last-child {
+            border-bottom: none;
+        }
+
+        .tl-node {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--navy);
+            border: 2px solid var(--g);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tl-node-num {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--g);
+            line-height: 1;
+        }
+
+        .tl-body {
+            flex: 1;
+            padding-top: 2px;
+        }
+
+        .tl-badge {
+            display: inline-block;
+            background: var(--g);
+            color: #000;
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .6rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 2px;
+            margin-bottom: 6px;
+        }
+
+        .tl-body h3 {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            margin-bottom: 4px;
+        }
+
+        .tl-body p {
+            font-size: .85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+   BONUS OFFERS SECTION — horizontal comparison
+============================================================ */
+        .bonuses-section {
+            padding: 72px 24px;
+        }
+
+        .bonuses-header {
+            margin-bottom: 44px;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--surf);
+            border: 1px solid var(--bdr2);
+            border-radius: 6px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: border-color .25s, transform .25s;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(144, 206, 85, .06) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .offer-card:hover {
+            border-color: rgba(144, 206, 85, .4);
+            transform: translateY(-4px);
+        }
+
+        .offer-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Featured card gets a green top strip */
+        .offer-card.featured {
+            border-color: rgba(144, 206, 85, .3);
+        }
+
+        .offer-card.featured::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--g), rgba(144, 206, 85, .4));
+        }
+
+        .oc-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--fb);
+            font-size: .62rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            background: rgba(144, 206, 85, .1);
+            color: var(--g);
+            border: 1px solid var(--g-line);
+            align-self: flex-start;
+        }
+
+        .oc-tag.ft {
+            background: rgba(144, 206, 85, .18);
+            color: var(--white);
+            border-color: var(--g);
+        }
+
+        .oc-amount {
+            font-family: var(--fd);
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        .oc-pct {
+            font-size: clamp(3rem, 8vw, 4.8rem);
+            line-height: .88;
+            display: block;
+            color: var(--white);
+        }
+
+        .offer-card.featured .oc-pct {
+            color: var(--g);
+        }
+
+        .oc-cap {
+            font-size: .82rem;
+            color: var(--muted);
+            font-family: var(--fb);
+            font-weight: 400;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .oc-name {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: rgba(255, 255, 255, .4);
+        }
+
+        .oc-desc {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .oc-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-family: var(--fd);
+            font-weight: 700;
+            font-style: italic;
+            font-size: .95rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 13px;
+            border-radius: 4px;
+            border: 1.5px solid var(--g-line);
+            color: var(--g);
+            background: transparent;
+            transition: background .22s, color .22s, border-color .22s, box-shadow .22s;
+        }
+
+        .oc-cta:hover {
+            background: var(--g);
+            color: #000;
+            border-color: var(--g);
+            box-shadow: 0 0 18px var(--g-glow);
+        }
+
+        .offer-card.featured .oc-cta {
+            background: var(--g);
+            color: #000;
+            border-color: var(--g);
+        }
+
+        .offer-card.featured .oc-cta:hover {
+            background: #a8dd6a;
+        }
+
+        .oc-terms {
+            font-size: .63rem;
+            color: rgba(255, 255, 255, .15);
+            text-align: center;
+        }
+
+        /* ============================================================
+   RG BANNER
+============================================================ */
+        .rg-banner {
+            padding: 0 24px 56px;
+        }
+
+        .rg-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--surf);
+            border: 1px solid var(--bdr2);
+            border-radius: 6px;
+            padding: 24px 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            border-left: 3px solid rgba(144, 206, 85, .3);
+        }
+
+        .rg-inner h4 {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-size: .9rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .rg-inner p {
+            font-size: .8rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ============================================================
+   FOOTER
+============================================================ */
+        footer {
+            background: var(--surf);
+            border-top: 1px solid var(--bdr2);
+            padding: 52px 24px 32px;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .footer-logo-svg {
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-family: var(--fb);
+            font-size: .65rem;
+            color: var(--muted);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .footer-license-title {
+            font-family: var(--fd);
+            font-weight: 700;
+            font-style: italic;
+            font-size: .82rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: 6px;
+        }
+
+        .footer-license-text {
+            font-size: .75rem;
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 580px;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            padding: 22px 0;
+            border-top: 1px solid var(--bdr2);
+            border-bottom: 1px solid var(--bdr2);
+        }
+
+        .footer-nav a {
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .3);
+            transition: color .2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--g);
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: .68rem;
+            color: rgba(255, 255, 255, .15);
+        }
+
+        .footer-compliance {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .compliance-img {
+            height: 22px;
+            width: auto;
+            opacity: .45;
+            transition: opacity .2s;
+        }
+
+        .compliance-img:hover {
+            opacity: 1;
+        }
+
+        .compliance-badge {
+            font-family: var(--fd);
+            font-size: .6rem;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            border: 1px solid var(--bdr2);
+            color: var(--muted);
+        }
+
+        /* ============================================================
+   REVEAL
+============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+   DESKTOP SPLIT — ≥ 900px
+   Left panel: navy + text (50%)
+   Right panel: image (50%), fixed to viewport, scrolls behind text
+============================================================ */
+        @media (min-width: 900px) {
+
+            /* Pill header converts to full-width bar */
+            header {
+                padding: 0;
+                height: auto;
+                background: transparent;
+            }
+
+            .header-inner {
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                padding: 0 40px;
+                height: 60px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                background: rgba(0, 8, 18, .92);
+                backdrop-filter: blur(24px);
+            }
+
+            .header-nav {
+                display: flex;
+            }
+
+            /* TRUE SPLIT HERO */
+            .hero {
+                flex-direction: row;
+                min-height: 100svh;
+                padding-top: 60px;
+                /* header space */
+            }
+
+            /* LEFT text panel — scrollable */
+            .hero-text-panel {
+                width: 50%;
+                flex-shrink: 0;
+                padding: 60px 56px 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: var(--navy);
+                position: relative;
+                z-index: 2;
+                /* Diagonal right edge */
+                clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
+            }
+
+            /* GREEN accent line on the left edge */
+            .hero-text-panel::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 4px;
+                background: linear-gradient(180deg, var(--g) 0%, rgba(144, 206, 85, .1) 100%);
+            }
+
+            /* RIGHT image panel — fills right half, sticks while text scrolls */
+            .hero-image-panel {
+                width: 50%;
+                height: auto;
+                max-height: none;
+                position: sticky;
+                top: 60px;
+                align-self: flex-start;
+                height: calc(100svh - 60px);
+            }
+
+            .hero-image-panel img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: 35% center;
+            }
+
+            .hero-image-panel::after {
+                /* Replace bottom fade with left fade — merges into slash */
+                top: 0;
+                left: 0;
+                right: auto;
+                bottom: 0;
+                width: 30%;
+                height: 100%;
+                background: linear-gradient(to right, var(--navy) 0%, transparent 100%);
+            }
+
+            /* Subtle green glow on image */
+            .hero-image-panel::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                background: radial-gradient(ellipse 60% 60% at 60% 40%, rgba(144, 206, 85, .08) 0%, transparent 70%);
+                pointer-events: none;
+            }
+
+            .hero h1 {
+                font-size: clamp(4rem, 6vw, 7rem);
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .stat-cell {
+                border-bottom: none;
+            }
+
+            .stat-cell:nth-child(2n) {
+                border-right: 1px solid var(--bdr);
+            }
+
+            .stat-cell:last-child {
+                border-right: none;
+            }
+
+            .steps-section {
+                padding: 80px 48px;
+            }
+
+            .timeline-line {
+                display: block;
+            }
+
+            .timeline-steps {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .tl-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 0 24px;
+                border-bottom: none;
+                border-right: none;
+                /* no border on desktop, line used instead */
+            }
+
+            .tl-node {
+                margin-bottom: 24px;
+            }
+
+            .bonuses-section {
+                padding: 80px 48px;
+            }
+
+            .offers-grid {
+                grid-template-columns: 1.15fr 1fr 1fr 1fr;
+            }
+
+            .rg-banner {
+                padding: 0 48px 60px;
+            }
+
+            footer {
+                padding: 60px 48px 36px;
+            }
+
+            .footer-grid {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .header-inner {
+                padding: 0 5%;
+            }
+
+            .hero-text-panel {
+                padding: 60px 5% 80px 5%;
+            }
+
+            .steps-section,
+            .bonuses-section,
+            footer {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .rg-banner {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a class="logo" href="#">
+                <img src="galabetlogo.svg" alt="Galabet">
+            </a>
+
+            <a href="#" class="header-cta">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <!-- LEFT: Text panel -->
+        <div class="hero-text-panel">
+            <div class="hero-kicker"><span class="live-dot"></span>Yeni Üye Kampanyaları — 2026</div>
+
+            <h1>
+                <span class="l1">Kazancın</span>
+                <span class="l2">Adresi</span>
+                <span class="l3">Galabet</span>
+            </h1>
+
+            <!-- Vertical bonus rows -->
+            <div class="bonus-rows">
+                <a href="#bonuses" class="bonus-row highlight">
+                    <div class="br-pct">₺50K</div>
+                    <div class="br-info">
+                        <div class="br-name">MAX BONUS</div>
+                        <div class="br-cap">Tüm yöntemler — Sınırsız eğlence</div>
+                    </div>
+                    <span class="br-arrow">→</span>
+                </a>
+                <a href="#bonuses" class="bonus-row">
+                    <div class="br-pct">%250</div>
+                    <div class="br-info">
+                        <div class="br-name">SPOR HOŞ GELDİN</div>
+                        <div class="br-cap">50.000 ₺'ye kadar</div>
+                    </div>
+                    <span class="br-arrow">→</span>
+                </a>
+                <a href="#bonuses" class="bonus-row">
+                    <div class="br-pct">%250</div>
+                    <div class="br-info">
+                        <div class="br-name">CASİNO HOŞ GELDİN</div>
+                        <div class="br-cap">50.000 ₺'ye kadar</div>
+                    </div>
+                    <span class="br-arrow">→</span>
+                </a>
+                <a href="#bonuses" class="bonus-row">
+                    <div class="br-pct">%100</div>
+                    <div class="br-info">
+                        <div class="br-name">KRİPTO BONUSU</div>
+                        <div class="br-cap">25.000 ₺'ye kadar</div>
+                    </div>
+                    <span class="br-arrow">→</span>
+                </a>
+            </div>
+
+            <div class="hero-ctas">
+                <a href="#bonuses" class="btn-primary">BONUSLARI AL →</a>
+                <a href="#steps" class="btn-ghost">NASIL ÇALIŞIR?</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: Image panel -->
+        <div class="hero-image-panel">
+            <img src="galabet-hero.png" alt="Galabet — Kazancın Adresi">
+        </div>
+
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar reveal">
+        <div class="stat-cell"><span class="stat-num"><span>+</span>500K</span><span class="stat-label">Aktif Üye</span>
+        </div>
+        <div class="stat-cell"><span class="stat-num">7<span>/</span>24</span><span class="stat-label">Canlı
+                Destek</span></div>
+        <div class="stat-cell"><span class="stat-num"><span>₺</span>50K</span><span class="stat-label">Maks.
+                Bonus</span></div>
+        <div class="stat-cell"><span class="stat-num">%<span>250</span></span><span class="stat-label">En Yüksek
+                Oran</span></div>
+    </div>
+
+    <!-- Steps -->
+    <section class="steps-section" id="steps">
+        <div class="section-head reveal">
+            <span class="sec-label">Nasıl Çalışır</span>
+            <h2 class="sec-title">4 Adımda <em>Kazanmaya Başla</em></h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-steps">
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span class="tl-node-num">01</span></div>
+                    <div class="tl-body">
+                        <span class="tl-badge">Hızlı</span>
+                        <h3>Hesap Aç</h3>
+                        <p>2 dakikadan kısa sürede üyeliğini tamamla, hemen başla.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span class="tl-node-num">02</span></div>
+                    <div class="tl-body">
+                        <span class="tl-badge">Seç</span>
+                        <h3>Bonusu Seç</h3>
+                        <p>Sana en uygun kampanyayı profilinden tek tıkla aktif et.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span class="tl-node-num">03</span></div>
+                    <div class="tl-body">
+                        <span class="tl-badge">Güvenli</span>
+                        <h3>Para Yatır</h3>
+                        <p>Banka, kripto veya e-cüzdan ile anında yatırım yap.</p>
+                    </div>
+                </div>
+                <div class="tl-item reveal">
+                    <div class="tl-node"><span class="tl-node-num">04</span></div>
+                    <div class="tl-body">
+                        <span class="tl-badge">Anında</span>
+                        <h3>Kazan</h3>
+                        <p>Bakiyen anında güncellenir. Favori bahislerine hemen gir!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonuses -->
+    <section class="bonuses-section" id="bonuses">
+        <div class="bonuses-header reveal">
+            <span class="sec-label">Hoş Geldin Paketleri</span>
+            <h2 class="sec-title">Dilediğin <em>Bonusu Al</em></h2>
+        </div>
+        <div class="offers-grid">
+            <div class="offer-card featured reveal">
+                <span class="oc-tag ft">★ En Büyük Paket</span>
+                <div class="oc-amount"><span class="oc-pct">₺50.000</span><span class="oc-cap">Tüm Yöntemler — Max
+                        Bonus</span></div>
+                <div class="oc-name">Max Bonus</div>
+                <p class="oc-desc">Platforma hoş geldin! 50.000 TL'ye varan devasa başlangıç. Yatırımının tam
+                    karşılığını bonus olarak al. Büyük oyna, büyük kazan.</p>
+                <a href="#" class="oc-cta">Teklifi Seç</a>
+                <p class="oc-terms">Şartlar ve koşullar geçerlidir. 18+</p>
+            </div>
+            <div class="offer-card reveal">
+                <span class="oc-tag">🔥 Kripto</span>
+                <div class="oc-amount"><span class="oc-pct">%100</span><span class="oc-cap">25.000 TL'ye kadar</span>
+                </div>
+                <div class="oc-name">Kripto Bonusu</div>
+                <p class="oc-desc">Kripto ile yatırım yap, katı bonus kazan. Hızlı, güvenli ve karlı.</p>
+                <a href="#" class="oc-cta">Teklifi Seç</a>
+                <p class="oc-terms">Şartlar ve koşullar geçerlidir. 18+</p>
+            </div>
+            <div class="offer-card reveal">
+                <span class="oc-tag">⚽ Spor</span>
+                <div class="oc-amount"><span class="oc-pct">%250</span><span class="oc-cap">50.000 TL'ye kadar</span>
+                </div>
+                <div class="oc-name">Spor Hoş Geldin</div>
+                <p class="oc-desc">Spor bahisleri için özel tasarlanmış hoş geldin paketi. İlk adımını güçlü at.</p>
+                <a href="#" class="oc-cta">Teklifi Seç</a>
+                <p class="oc-terms">Şartlar ve koşullar geçerlidir. 18+</p>
+            </div>
+            <div class="offer-card reveal">
+                <span class="oc-tag">🎰 Casino</span>
+                <div class="oc-amount"><span class="oc-pct">%250</span><span class="oc-cap">50.000 TL'ye kadar</span>
+                </div>
+                <div class="oc-name">Casino Hoş Geldin</div>
+                <p class="oc-desc">Slot, masa oyunları ve live casino için güçlü başlangıç bonusu.</p>
+                <a href="#" class="oc-cta">Teklifi Seç</a>
+                <p class="oc-terms">Şartlar ve koşullar geçerlidir. 18+</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RG -->
+    <div class="rg-banner reveal">
+        <div class="rg-inner">
+            <h4>⚠ Bilinçli Oyun Politikamız</h4>
+            <p>Şans oyunları eğlence amaçlıdır. Kaybetmeyi göze alabileceğinizden fazlasını harcamayın. Yardıma
+                ihtiyacınız varsa <strong>Canlı Destek</strong> hattımızdan ulaşabilirsiniz. Galabet sadece 18+
+                kullanıcılara hizmet vermektedir.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="galabetlogo.svg" alt="Galabet" class="footer-logo-svg"
+                    style="height:28px;width:auto;margin-bottom:8px;">
+                <p class="footer-tagline">Kazancın Adresi</p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <p class="footer-license-title">Anjouan Gaming License</p>
+                <p class="footer-license-text" style="text-align: center; margin: 0 auto;">Bu site, Curaçao Ticaret ve
+                    Sanayi Odası Ticaret Siciline kayıtlı Galabet
+                    Entertainment B.V tarafından işletilmektedir. Lisans numarası 8048/JAZ Curaçao Egaming tarafından
+                    verilmiştir. Curaçao Hükümeti tarafından yetkilendirilir ve düzenlenir.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Galabet 2026. Tüm hakları saklıdır. Sadece 18+ kullanıcılara açıktır.</p>
+            <div class="footer-compliance">
+                <img src="Anjouan-license.png" alt="Anjouan" class="compliance-img">
+                <img src="gcb.webp" alt="GCB" class="compliance-img">
+                <img src="dmca.webp" alt="DMCA" class="compliance-img">
+                <span class="compliance-badge">SSL Güvenli</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* Scroll reveal */
+        (function () {
+            const io = new IntersectionObserver(entries => {
+                entries.forEach((e, i) => {
+                    if (e.isIntersecting) {
+                        e.target.style.transitionDelay = (i * .08) + 's';
+                        e.target.classList.add('visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, { threshold: .08 });
+            document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+        })();
+
+        /* Header gets a harder bg as user scrolls into non-hero sections */
+        (function () {
+            const hi = document.querySelector('.header-inner');
+            window.addEventListener('scroll', () => {
+                const p = Math.min(window.scrollY / 300, 1);
+                hi.style.background = `rgba(0,8,18,${.85 + p * .14})`;
+            }, { passive: true });
+        })();
+    </script>
+</body>
+
+</html>
