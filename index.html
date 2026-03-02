@@ -478,27 +478,24 @@
         /* ============================================================
    STATS BAR
 ============================================================ */
+
         .stats-bar {
             background: var(--navy-mid);
             border-top: 1px solid var(--bdr);
             border-bottom: 1px solid var(--bdr);
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
         }
 
         .stat-cell {
             padding: 24px 16px;
             text-align: center;
-            border-right: 1px solid var(--bdr);
-            border-bottom: 1px solid var(--bdr);
         }
 
-        .stat-cell:nth-child(2n) {
-            border-right: none;
-        }
-
-        .stat-cell:nth-last-child(-n+2) {
-            border-bottom: none;
+        /* vertical dividers between cells while keeping edges clean */
+        .stats-bar .stat-cell + .stat-cell {
+            border-left: 1px solid var(--bdr);
         }
 
         .stat-num {
@@ -626,6 +623,9 @@
         .tl-body {
             flex: 1;
             padding-top: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .tl-badge {
@@ -1147,19 +1147,7 @@
             }
 
             .stats-bar {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .stat-cell {
-                border-bottom: none;
-            }
-
-            .stat-cell:nth-child(2n) {
-                border-right: 1px solid var(--bdr);
-            }
-
-            .stat-cell:last-child {
-                border-right: none;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             }
 
             .steps-section {
@@ -1172,6 +1160,7 @@
 
             .timeline-steps {
                 grid-template-columns: repeat(4, 1fr);
+                align-items: stretch;
             }
 
             .tl-item {
@@ -1181,6 +1170,7 @@
                 padding: 0 24px;
                 border-bottom: none;
                 border-right: none;
+                height: 100%;
                 /* no border on desktop, line used instead */
             }
 
@@ -1312,16 +1302,14 @@
     </section>
 
     <!-- Stats Bar -->
-    <div class="stats-bar reveal">
-        <div class="stat-cell"><span class="stat-num"><span>+</span>500K</span><span class="stat-label">Aktif Üye</span>
-        </div>
+        <div class="stats-bar reveal">
         <div class="stat-cell"><span class="stat-num">7<span>/</span>24</span><span class="stat-label">Canlı
-                Destek</span></div>
+            Destek</span></div>
         <div class="stat-cell"><span class="stat-num"><span>₺</span>50K</span><span class="stat-label">Maks.
-                Bonus</span></div>
+            Bonus</span></div>
         <div class="stat-cell"><span class="stat-num">%<span>250</span></span><span class="stat-label">En Yüksek
-                Oran</span></div>
-    </div>
+            Oran</span></div>
+        </div>
 
     <!-- Steps -->
     <section class="steps-section" id="steps">
